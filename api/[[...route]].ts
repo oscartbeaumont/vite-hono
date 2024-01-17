@@ -1,9 +1,9 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 
-// export const config = {
-//   runtime: "edge",
-// };
+export const config = {
+  runtime: "edge",
+};
 
 const app = new Hono().basePath("/api");
 
@@ -16,9 +16,9 @@ app.get("/hello", (c) => {
 const handler = handle(app);
 
 export default {
-  config: {
-    runtime: "edge",
-  },
+  // config: {
+  //   runtime: "edge",
+  // },
   GET: handler,
   POST: handler,
   PUT: handler,
