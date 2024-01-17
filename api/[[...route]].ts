@@ -17,14 +17,20 @@ app.all("*", (c) => c.text("404: Not Found"));
 
 const handler = handle(app);
 
-export default {
-  GET: async (req, context) => {
-    const resp = await handler(req, context);
-    console.log(resp); // TODO
-    return new Response("API TODO");
-  },
-  // POST: handler,
-  // PUT: handler,
-  // PATCH: handler,
-  // DELETE: handler,
+export const GET = async (req, context) => {
+  const resp = await handler(req, context);
+  console.log(resp); // TODO
+  return new Response("API TODO");
 };
+
+// export default {
+//   GET: async (req, context) => {
+//     const resp = await handler(req, context);
+//     console.log(resp); // TODO
+//     return new Response("API TODO");
+//   },
+//   // POST: handler,
+//   // PUT: handler,
+//   // PATCH: handler,
+//   // DELETE: handler,
+// };
