@@ -14,7 +14,7 @@ export default defineConfig({
     }),
     devServer({
       entry: "./api/[[...route]].ts",
-      shouldServeWithHono: (path) => path.startsWith("/api"),
+      include: [/^\/api/],
     }),
     !("VERCEL" in process.env) && visualizer(),
   ],

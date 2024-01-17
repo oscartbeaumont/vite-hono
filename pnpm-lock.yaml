@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@hono/vite-dev-server@0.3.4':
-    hash: ymoviqrw27gdg4g5g5b5qigaaq
+    hash: lm6hffb443dkowb6li4ojfxrgu
     path: patches/@hono__vite-dev-server@0.3.4.patch
 
 dependencies:
@@ -20,7 +20,10 @@ dependencies:
 devDependencies:
   '@hono/vite-dev-server':
     specifier: ^0.3.4
-    version: 0.3.4(patch_hash=ymoviqrw27gdg4g5g5b5qigaaq)(hono@3.12.5)
+    version: 0.3.4(patch_hash=lm6hffb443dkowb6li4ojfxrgu)(hono@3.12.5)
+  '@types/node':
+    specifier: ^20.11.4
+    version: 20.11.4
   rollup-plugin-visualizer:
     specifier: ^5.12.0
     version: 5.12.0
@@ -29,7 +32,7 @@ devDependencies:
     version: 5.3.3
   vite:
     specifier: ^5.0.11
-    version: 5.0.11
+    version: 5.0.11(@types/node@20.11.4)
   vite-plugin-html:
     specifier: ^3.2.1
     version: 3.2.1(vite@5.0.11)
@@ -636,7 +639,7 @@ packages:
     engines: {node: '>=18.14.1'}
     dev: true
 
-  /@hono/vite-dev-server@0.3.4(patch_hash=ymoviqrw27gdg4g5g5b5qigaaq)(hono@3.12.5):
+  /@hono/vite-dev-server@0.3.4(patch_hash=lm6hffb443dkowb6li4ojfxrgu)(hono@3.12.5):
     resolution: {integrity: sha512-zxBeiZ2xXlU1S3RiVNsdahKruks1pf9igTJK+81EExD14h9ucyc40l6xLdgVHiIHhEPyqvrcFUBBmn66+QnhxA==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -861,6 +864,12 @@ packages:
 
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+    dev: true
+
+  /@types/node@20.11.4:
+    resolution: {integrity: sha512-6I0fMH8Aoy2lOejL3s4LhyIYX34DPwY8bl5xlNjBvUEk8OHrcuzsFt+Ied4LvJihbtXPM+8zUqdydfIti86v9g==}
+    dependencies:
+      undici-types: 5.26.5
     dev: true
 
   /acorn-walk@8.3.2:
@@ -1785,6 +1794,10 @@ packages:
     hasBin: true
     dev: true
 
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
+
   /undici@5.28.2:
     resolution: {integrity: sha512-wh1pHJHnUeQV5Xa8/kyQhO7WFa8M34l026L5P/+2TYiakvGy5Rdc8jWZVyG7ieht/0WgJLEd3kcU5gKx+6GC8w==}
     engines: {node: '>=14.0'}
@@ -1829,7 +1842,7 @@ packages:
       html-minifier-terser: 6.1.0
       node-html-parser: 5.4.2
       pathe: 0.2.0
-      vite: 5.0.11
+      vite: 5.0.11(@types/node@20.11.4)
     dev: true
 
   /vite-plugin-solid@2.8.0(solid-js@1.8.11)(vite@5.0.11):
@@ -1845,13 +1858,13 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.11
       solid-refresh: 0.5.3(solid-js@1.8.11)
-      vite: 5.0.11
+      vite: 5.0.11(@types/node@20.11.4)
       vitefu: 0.2.5(vite@5.0.11)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite@5.0.11:
+  /vite@5.0.11(@types/node@20.11.4):
     resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -1879,6 +1892,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.11.4
       esbuild: 0.19.11
       postcss: 8.4.33
       rollup: 4.9.5
@@ -1894,7 +1908,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.0.11
+      vite: 5.0.11(@types/node@20.11.4)
     dev: true
 
   /workerd@1.20231218.0:
