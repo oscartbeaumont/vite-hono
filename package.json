@@ -14,8 +14,10 @@
   },
   "devDependencies": {
     "@hono/vite-dev-server": "^0.3.4",
+    "rollup-plugin-visualizer": "^5.12.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
+    "vite-plugin-html": "^3.2.1",
     "vite-plugin-solid": "^2.8.0"
   },
   "pnpm": {
