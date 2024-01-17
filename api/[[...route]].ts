@@ -11,4 +11,12 @@ app.get("/hello", (c) => {
   });
 });
 
-export default handle(app);
+const handler = handle(app);
+
+export default {
+  GET: handler,
+  POST: handler,
+  PUT: handler,
+  PATCH: handler,
+  DELETE: handler,
+};
