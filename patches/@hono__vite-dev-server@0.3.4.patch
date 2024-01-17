@@ -1,0 +1,70 @@
+diff --git a/dist/dev-server.cjs b/dist/dev-server.cjs
+index 825b39400e4f9d17b2c42986c94163a4216dc931..5426c1c80e04f4f303f344a60686ecb8c1f4d4bb 100644
+--- a/dist/dev-server.cjs
++++ b/dist/dev-server.cjs
+@@ -44,6 +44,9 @@ function devServer(options) {
+     configureServer: async (server) => {
+       async function createMiddleware(server2) {
+         return async function(req, res, next) {
++          if (options?.shouldServeWithHono && !options.shouldServeWithHono(req.url)) {
++            return next();
++          }
+           const exclude = options?.exclude ?? defaultOptions.exclude;
+           for (const pattern of exclude) {
+             if (req.url) {
+diff --git a/dist/dev-server.d.cts b/dist/dev-server.d.cts
+index 5d1571e7c503b66db35c338b78afb97ae1a4c58a..0db7e38cc6e142aff462b834866c28b8e674ef30 100644
+--- a/dist/dev-server.d.cts
++++ b/dist/dev-server.d.cts
+@@ -8,6 +8,7 @@ type DevServerOptions = {
+     injectClientScript?: boolean;
+     exclude?: (string | RegExp)[];
+     env?: Env | EnvFunc;
++    shouldServeWithHono?: (url: string) => boolean;
+ } & {
+     /**
+      * @deprecated
+@@ -16,7 +17,7 @@ type DevServerOptions = {
+      */
+     cf?: Parameters<typeof getEnv>[0];
+ };
+-declare const defaultOptions: Required<Omit<DevServerOptions, 'env' | 'cf'>>;
++declare const defaultOptions: Required<Omit<DevServerOptions, 'env' | 'cf' | "shouldServeWithHono">>;
+ declare function devServer(options?: DevServerOptions): Plugin;
+ 
+ export { DevServerOptions, defaultOptions, devServer };
+diff --git a/dist/dev-server.d.ts b/dist/dev-server.d.ts
+index b383796e3db191dcee1713e4b143f1194d9528bd..4b12da97ea5324d5af8438aeb06d276293518bd0 100644
+--- a/dist/dev-server.d.ts
++++ b/dist/dev-server.d.ts
+@@ -8,6 +8,7 @@ type DevServerOptions = {
+     injectClientScript?: boolean;
+     exclude?: (string | RegExp)[];
+     env?: Env | EnvFunc;
++    shouldServeWithHono?: (url: string) => boolean;
+ } & {
+     /**
+      * @deprecated
+@@ -16,7 +17,7 @@ type DevServerOptions = {
+      */
+     cf?: Parameters<typeof getEnv>[0];
+ };
+-declare const defaultOptions: Required<Omit<DevServerOptions, 'env' | 'cf'>>;
++declare const defaultOptions: Required<Omit<DevServerOptions, 'env' | 'cf' | "shouldServeWithHono">>;
+ declare function devServer(options?: DevServerOptions): Plugin;
+ 
+ export { DevServerOptions, defaultOptions, devServer };
+diff --git a/dist/dev-server.js b/dist/dev-server.js
+index 13c97bde391267a49efe1258b98d5ade68beccb6..12e6bfdffa5c04ac03d68c17ee163b9ae55e25b0 100644
+--- a/dist/dev-server.js
++++ b/dist/dev-server.js
+@@ -20,6 +20,9 @@ function devServer(options) {
+     configureServer: async (server) => {
+       async function createMiddleware(server2) {
+         return async function(req, res, next) {
++          if (options?.shouldServeWithHono && !options.shouldServeWithHono(req.url)) {
++            return next();
++          }
+           const exclude = options?.exclude ?? defaultOptions.exclude;
+           for (const pattern of exclude) {
+             if (req.url) {

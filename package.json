@@ -10,11 +10,17 @@
   },
   "dependencies": {
     "hono": "^3.12.5",
-    "solid-js": "^1.8.7"
+    "solid-js": "^1.8.11"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8",
+    "@hono/vite-dev-server": "^0.3.4",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
     "vite-plugin-solid": "^2.8.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@hono/vite-dev-server@0.3.4": "patches/@hono__vite-dev-server@0.3.4.patch"
+    }
   }
 }

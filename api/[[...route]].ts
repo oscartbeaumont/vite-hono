@@ -13,12 +13,20 @@ app.get("/hello", (c) => {
   });
 });
 
+app.get("/env", (c) => {
+  return c.json({
+    message: `${import.meta.env.DEMO} | ${import.meta.env.VITE_DEMO}`,
+  });
+});
+
 app.all("*", (c) => c.text("404: Not Found"));
 
-const handler = handle(app);
+// This is for Vercel
+export const GET = handle(app);
+export const POST = GET;
+export const PUT = GET;
+export const PATCH = GET;
+export const DELETE = GET;
 
-export const GET = handler;
-export const POST = handler;
-export const PUT = handler;
-export const PATCH = handler;
-export const DELETE = handler;
+// This is for `@hono/vite-dev-server`
+export default app;
