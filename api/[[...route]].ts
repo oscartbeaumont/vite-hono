@@ -13,12 +13,11 @@ app.get("/hello", (c) => {
   });
 });
 
+app.all("*", (c) => c.text("404: Not Found"));
+
 const handler = handle(app);
 
 export default {
-  // config: {
-  //   runtime: "edge",
-  // },
   GET: handler,
   POST: handler,
   PUT: handler,
