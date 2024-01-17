@@ -15,7 +15,7 @@ app.get("/hello", (c) => {
 
 app.get("/env", (c) => {
   if (!import.meta.env) import.meta.env = {};
-  import.meta.env.DEMO = "abc";
+  import.meta.env.DEMO = process.env.DEMO;
   return c.json({
     message: `${import.meta.env.DEMO} | ${import.meta.env.VITE_DEMO}`,
   });
