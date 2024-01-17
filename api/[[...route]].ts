@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 
-export const runtime = "edge";
+// export const runtime = "edge"; // TODO: This isn't being picked up
 
 const app = new Hono().basePath("/api");
 
@@ -14,6 +14,7 @@ app.get("/hello", (c) => {
 const handler = handle(app);
 
 export default {
+  runtime: "edge",
   GET: handler,
   POST: handler,
   PUT: handler,
