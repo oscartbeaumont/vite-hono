@@ -11,4 +11,4 @@ app.get("/hello", (c) => {
   });
 });
 
-export const handler = handle(app);
+export default handle(app);
