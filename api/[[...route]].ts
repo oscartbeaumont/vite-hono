@@ -11,4 +11,4 @@ app.get("/hello", (c) => {
   });
 });
 
-export const GET = handle(app);
+export const handler = handle(app);
