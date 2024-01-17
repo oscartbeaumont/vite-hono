@@ -1,6 +1,9 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 
+// Configure env in Vercel Functions
+if (!import.meta.env) import.meta.env = process.env;
+
 export const config = {
   runtime: "edge",
 };
@@ -14,10 +17,9 @@ app.get("/hello", (c) => {
 });
 
 app.get("/env", (c) => {
-  if (!import.meta.env) import.meta.env = {};
-  import.meta.env.DEMO = process.env.DEMO;
   return c.json({
     message: `${import.meta.env.DEMO} | ${import.meta.env.VITE_DEMO}`,
+    demo: import.meta.env,
   });
 });
 
